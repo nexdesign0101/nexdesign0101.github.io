@@ -28,8 +28,8 @@
         --bg-color: #0f0f11;
         --text-light: #ffffff;
         --text-muted: #a0a0a0;
-        --grad-start: #8a2be2; /* Purple */
-        --grad-end: #00bfff; /* Cyan */
+        --grad-start: #8a2be2;
+        --grad-end: #00bfff;
         --card-bg: #1a1a1c;
       }
 
@@ -44,15 +44,16 @@
         background-color: var(--bg-color);
         color: var(--text-light);
         line-height: 1.6;
+        overflow-x: hidden;
       }
 
-      /* Navigation */
+      /* ── Navigation ── */
       nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 20px 50px;
-        background-color: rgba(15, 15, 17, 0.95);
+        padding: 16px 50px;
+        background-color: rgba(15, 15, 17, 0.97);
         position: sticky;
         top: 0;
         z-index: 100;
@@ -60,15 +61,46 @@
       }
 
       .logo-container img {
-        height: 50px;
+        height: 44px;
         object-fit: contain;
+      }
+
+      /* Hamburger button — hidden on desktop */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        flex: none;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--text-light);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+
+      /* Hamburger → X when open */
+      .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .hamburger.open span:nth-child(2) { opacity: 0; }
+      .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
       }
 
       .nav-links a {
         color: var(--text-light);
         text-decoration: none;
-        margin-left: 30px;
         font-weight: 500;
+        font-size: 1rem;
         transition: color 0.3s ease;
       }
 
@@ -76,10 +108,10 @@
         color: var(--grad-end);
       }
 
-      /* Hero Section */
+      /* ── Hero ── */
       .hero {
         text-align: center;
-        padding: 100px 20px;
+        padding: 100px 24px;
       }
 
       .hero h1 {
@@ -101,7 +133,7 @@
         text-transform: uppercase;
       }
 
-      /* Portfolio Section */
+      /* ── Portfolio ── */
       .portfolio {
         padding: 60px 50px;
       }
@@ -114,27 +146,27 @@
 
       .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         gap: 20px;
       }
 
       .project-card {
         background-color: var(--card-bg);
-        border-radius: 8px;
-        height: 250px;
+        border-radius: 10px;
+        height: 200px;
         display: flex;
         align-items: center;
         justify-content: center;
         border: 1px solid #333;
         transition: transform 0.3s ease;
         cursor: pointer;
+        text-align: center;
+        padding: 20px;
       }
 
-      .project-card a {
-        color: var(--text-light);
-        text-decoration: none;
-        font-size: 1.2rem;
-        font-weight: bold;
+      .project-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--grad-start);
       }
 
       a {
@@ -144,12 +176,7 @@
         font-weight: bold;
       }
 
-      .project-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--grad-start);
-      }
-
-      /* Order Form Section */
+      /* ── Order Form ── */
       .order-section {
         padding: 60px 50px;
         background-color: var(--card-bg);
@@ -168,18 +195,24 @@
         display: block;
         margin-bottom: 8px;
         color: var(--text-muted);
+        font-size: 0.95rem;
       }
 
       input,
       select,
       textarea {
         width: 100%;
-        padding: 12px;
+        padding: 14px 12px;
         background-color: var(--bg-color);
         border: 1px solid #333;
         color: var(--text-light);
-        border-radius: 5px;
+        border-radius: 8px;
         outline: none;
+        font-size: 1rem;
+        /* Prevent iOS zoom on focus (font-size must be ≥16px) */
+        font-size: 16px;
+        -webkit-appearance: none;
+        appearance: none;
       }
 
       input:focus,
@@ -196,18 +229,20 @@
 
       button {
         flex: 1;
-        padding: 15px;
+        padding: 16px;
         border: none;
-        border-radius: 5px;
+        border-radius: 8px;
         font-size: 1rem;
         font-weight: bold;
         cursor: pointer;
         transition: opacity 0.3s ease;
+        /* Ensure tap target is big enough */
+        min-height: 52px;
+        touch-action: manipulation;
       }
 
-      button:hover {
-        opacity: 0.8;
-      }
+      button:hover { opacity: 0.85; }
+      button:active { opacity: 0.7; }
 
       .btn-email {
         background: linear-gradient(90deg, var(--grad-start), var(--grad-end));
@@ -219,10 +254,10 @@
         color: white;
       }
 
-      /* Social Media Section */
+      /* ── Social ── */
       .social-section {
         text-align: center;
-        padding: 40px 50px 80px 50px;
+        padding: 40px 50px 80px;
       }
 
       .social-links {
@@ -230,17 +265,19 @@
         justify-content: center;
         gap: 20px;
         margin-top: 30px;
+        flex-wrap: wrap;
       }
 
       .social-btn {
-        padding: 12px 30px;
+        padding: 14px 36px;
         border: 2px solid #333;
-        border-radius: 5px;
+        border-radius: 8px;
         color: var(--text-light);
         text-decoration: none;
         font-weight: bold;
-        transition: all 0.3s ease;
         font-size: 1rem;
+        transition: all 0.3s ease;
+        touch-action: manipulation;
       }
 
       .social-btn:hover {
@@ -249,44 +286,72 @@
         transform: translateY(-3px);
       }
 
-      /* Footer */
+      /* ── Footer ── */
       footer {
         text-align: center;
         padding: 20px;
         border-top: 1px solid #333;
         color: var(--text-muted);
+        font-size: 0.9rem;
       }
 
-      /* --- MOBILE RESPONSIVENESS --- */
+      /* ════════════════════════════════
+         MOBILE  ≤ 768 px
+      ════════════════════════════════ */
       @media (max-width: 768px) {
+
+        /* Nav */
         nav {
-          flex-direction: column;
-          padding: 20px;
-          gap: 15px;
+          padding: 14px 20px;
+          position: relative;
+        }
+
+        .hamburger {
+          display: flex;
         }
 
         .nav-links {
+          display: none;
+          flex-direction: column;
+          gap: 0;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background-color: rgba(15, 15, 17, 0.98);
+          border-bottom: 1px solid #333;
+          padding: 10px 0;
+        }
+
+        .nav-links.open {
           display: flex;
-          gap: 15px;
         }
 
         .nav-links a {
-          margin-left: 0;
-          font-size: 1rem;
+          padding: 14px 24px;
+          font-size: 1.05rem;
+          border-bottom: 1px solid #222;
         }
 
+        .nav-links a:last-child {
+          border-bottom: none;
+        }
+
+        /* Hero */
         .hero {
-          padding: 60px 20px;
+          padding: 60px 20px 40px;
         }
 
         .hero h1 {
-          font-size: 2.5rem;
+          font-size: 2.6rem;
         }
 
         .hero p {
-          font-size: 1rem;
+          font-size: 0.95rem;
+          letter-spacing: 1.5px;
         }
 
+        /* Sections */
         .portfolio,
         .order-section,
         .social-section {
@@ -294,25 +359,51 @@
         }
 
         .section-title {
-          font-size: 2rem;
+          font-size: 1.9rem;
+          margin-bottom: 28px;
         }
 
+        /* Cards */
         .grid {
           grid-template-columns: 1fr;
+          gap: 16px;
         }
 
+        .project-card {
+          height: 130px;
+          border-radius: 10px;
+        }
+
+        /* Buttons */
         .button-group {
           flex-direction: column;
+          gap: 12px;
         }
 
+        /* Socials */
         .social-links {
           flex-direction: column;
           align-items: center;
+          gap: 14px;
         }
 
         .social-btn {
           width: 100%;
-          max-width: 300px;
+          max-width: 320px;
+          text-align: center;
+        }
+      }
+
+      /* ════════════════════════════════
+         SMALL PHONES  ≤ 400 px
+      ════════════════════════════════ */
+      @media (max-width: 400px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .section-title {
+          font-size: 1.6rem;
         }
       }
     </style>
@@ -322,10 +413,16 @@
       <div class="logo-container">
         <img src="logo01-removebg-preview.png" alt="NexDesign Logo" />
       </div>
-      <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#work">Our Work</a>
-        <a href="#order">Start a Project</a>
+
+      <!-- Hamburger menu button -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home" onclick="closeMenu()">Home</a>
+        <a href="#work" onclick="closeMenu()">Our Work</a>
+        <a href="#order" onclick="closeMenu()">Start a Project</a>
       </div>
     </nav>
 
@@ -335,14 +432,7 @@
     </section>
 
     <section class="hero" style="padding-top: 0">
-      <p
-        style="
-          max-width: 800px;
-          margin: 0 auto;
-          text-transform: none;
-          letter-spacing: 1px;
-        "
-      >
+      <p style="max-width: 800px; margin: 0 auto; text-transform: none; letter-spacing: 1px;">
         NexDesign is a creative design brand focused on building modern
         websites, digital experiences, and visual identities. The name combines
         'Next' and 'Design' to represent innovation, growth, and the future of
@@ -375,24 +465,12 @@
         <form id="orderForm">
           <div class="form-group">
             <label for="name">Full Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              placeholder="Enter your name"
-            />
+            <input type="text" id="name" name="name" required placeholder="Enter your name" autocomplete="name" />
           </div>
 
           <div class="form-group">
             <label for="email">Email Address</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              placeholder="Enter your email"
-            />
+            <input type="email" id="email" name="email" required placeholder="Enter your email" autocomplete="email" inputmode="email" />
           </div>
 
           <div class="form-group">
@@ -407,26 +485,12 @@
 
           <div class="form-group">
             <label for="details">Project Details</label>
-            <textarea
-              id="details"
-              name="details"
-              rows="5"
-              required
-              placeholder="Describe your project requirements..."
-            ></textarea>
+            <textarea id="details" name="details" rows="5" required placeholder="Describe your project requirements..."></textarea>
           </div>
 
           <div class="button-group">
-            <button type="button" class="btn-email" onclick="sendToEmail()">
-              Send via Email
-            </button>
-            <button
-              type="button"
-              class="btn-whatsapp"
-              onclick="sendToWhatsApp()"
-            >
-              Send via WhatsApp
-            </button>
+            <button type="button" class="btn-email" onclick="sendToEmail()">Send via Email</button>
+            <button type="button" class="btn-whatsapp" onclick="sendToWhatsApp()">Send via WhatsApp</button>
           </div>
         </form>
       </div>
@@ -437,19 +501,8 @@
         Follow <span class="gradient-text">Us</span>
       </h2>
       <div class="social-links">
-        <a
-          href="https://www.instagram.com/nexdesign.01.01?igsh=MWtzMGRubWhvYnp2OA=="
-          target="_blank"
-          class="social-btn"
-          >Instagram</a
-        >
-
-        <a
-          href="https://www.facebook.com/share/1D1kjYpCx9/"
-          target="_blank"
-          class="social-btn"
-          >Facebook</a
-        >
+        <a href="https://www.instagram.com/nexdesign.01.01?igsh=MWtzMGRubWhvYnp2OA==" target="_blank" class="social-btn">Instagram</a>
+        <a href="https://www.facebook.com/share/1D1kjYpCx9/" target="_blank" class="social-btn">Facebook</a>
       </div>
     </section>
 
@@ -458,9 +511,31 @@
     </footer>
 
     <script>
+      // ── Hamburger menu ──
+      const hamburger = document.getElementById("hamburger");
+      const navLinks  = document.getElementById("navLinks");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("open");
+        navLinks.classList.toggle("open");
+      });
+
+      function closeMenu() {
+        hamburger.classList.remove("open");
+        navLinks.classList.remove("open");
+      }
+
+      // Close menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      // ── EmailJS ──
       function sendToEmail() {
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
+        const name    = document.getElementById("name").value;
+        const email   = document.getElementById("email").value;
         const service = document.getElementById("service").value;
         const details = document.getElementById("details").value;
 
@@ -476,45 +551,35 @@
           message: details,
         };
 
-        const SERVICE_ID = "service_xdj1t06";
-        const TEMPLATE_ID = "template_f4pzldh";
-
         if (!window.emailjs || typeof emailjs.send !== "function") {
-          alert(
-            "Email service is unavailable. Make sure the EmailJS SDK is loaded.",
-          );
+          alert("Email service is unavailable. Make sure the EmailJS SDK is loaded.");
           return;
         }
 
-        emailjs
-          .send(SERVICE_ID, TEMPLATE_ID, templateParams)
-          .then(function (response) {
+        emailjs.send("service_xdj1t06", "template_f4pzldh", templateParams)
+          .then(() => {
             alert("SUCCESS! Your order has been sent to NexDesign.");
             document.getElementById("orderForm").reset();
           })
-          .catch(function (error) {
+          .catch((error) => {
             alert("FAILED to send email. Error: " + JSON.stringify(error));
           });
       }
 
+      // ── WhatsApp ──
       function sendToWhatsApp() {
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
+        const name    = document.getElementById("name").value;
+        const email   = document.getElementById("email").value;
         const service = document.getElementById("service").value;
         const details = document.getElementById("details").value;
 
         if (!name || !email || !details) {
-          alert(
-            "Please fill in your name, email, and project details before sending to WhatsApp.",
-          );
+          alert("Please fill in your name, email, and project details before sending to WhatsApp.");
           return;
         }
 
         const message = `*New Order Reservation*\n\n*Name:* ${name}\n*Email:* ${email}\n*Service:* ${service}\n*Details:* ${details}`;
-        const encodedMessage = encodeURIComponent(message);
-
-        const whatsappNumber = "201093525871";
-        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+        const whatsappURL = `https://wa.me/201093525871?text=${encodeURIComponent(message)}`;
         window.open(whatsappURL, "_blank");
       }
     </script>
