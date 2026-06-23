@@ -1,0 +1,134 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+html { scroll-behavior: smooth; }
+body { background-color: #f4f6f9; color: #333333; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
+
+/* Header & Menu (Standard ClickDash) */
+header { background-color: #080834; display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); }
+header img { width: 200px; transition: transform 0.3s ease; }
+header img:hover { transform: scale(1.05); }
+#menu-icon { cursor: pointer; z-index: 101; transition: transform 0.3s ease; }
+#menu-icon:hover { transform: rotate(90deg); }
+#menu-con { width: 300px; height: 100vh; background-color: rgba(8, 8, 52, 0.95); backdrop-filter: blur(10px); position: fixed; top: 0; right: 0; display: flex; justify-content: center; align-items: center; z-index: 90; transform: translateX(100%); transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1); box-shadow: -5px 0 20px rgba(0,0,0,0.2); }
+#menu-con.active { transform: translateX(0); }
+#menu-con ul { list-style: none; text-align: center; }
+#menu-con ul li { margin: 35px 0; }
+#menu-con ul li a { color: #ffffff; text-decoration: none; font-size: 1.8rem; font-weight: 600; transition: color 0.3s ease; }
+#menu-con ul li a:hover { color: #FFD700; letter-spacing: 2px; }
+
+/* Tracking Container */
+main { flex: 1; padding: 60px 5%; max-width: 900px; margin: 0 auto; width: 100%; animation: fadeSlideUp 0.8s ease-out; }
+
+.tracking-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+}
+
+.tracking-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #f4f6f9;
+}
+
+.tracking-header h1 { color: #080834; font-size: 2.2rem; margin-bottom: 10px; }
+.tracking-header p { color: #666; font-size: 1.1rem; }
+.tracking-header .highlight { color: #28a745; font-weight: 700; font-size: 1.3rem; } /* Green for success */
+
+/* Progress Stepper */
+.stepper-wrapper {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 50px;
+  padding: 0 20px;
+}
+
+/* Background connecting line */
+.stepper-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 50px;
+  right: 50px;
+  height: 4px;
+  background-color: #e0e0e0;
+  z-index: 1;
+}
+
+.step {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 25%;
+}
+
+.step-circle {
+  width: 45px;
+  height: 45px;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  margin: 0 auto 15px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  transition: all 0.4s ease;
+  border: 4px solid #fff; /* Creates a cutout effect against the line */
+}
+
+.step-title {
+  font-weight: 600;
+  color: #888;
+  font-size: 0.95rem;
+}
+
+.step-desc {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-top: 5px;
+}
+
+/* Active & Completed States */
+.step.completed .step-circle { background-color: #28a745; }
+.step.completed .step-title { color: #28a745; }
+
+.step.active .step-circle {
+  background-color: #080834;
+  box-shadow: 0 0 0 5px rgba(8, 8, 52, 0.2);
+  transform: scale(1.1);
+}
+.step.active .step-title { color: #080834; }
+
+/* Active Line Fill (Simulated) */
+.stepper-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 50px;
+  width: 35%; /* Adjust this to fill the line up to the active step */
+  height: 4px;
+  background-color: #28a745;
+  z-index: 1;
+  transition: width 1s ease;
+}
+
+/* Action Button */
+.action-area { text-align: center; margin-top: 40px; }
+.home-btn { background-color: #080834; color: #fff; text-decoration: none; padding: 15px 30px; border-radius: 30px; font-weight: 600; transition: all 0.3s ease; display: inline-block; }
+.home-btn:hover { background-color: #FFD700; color: #080834; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2); }
+
+/* Footer */
+footer { background-color: #080834; color: #ffffff; text-align: center; padding: 30px 20px; margin-top: auto; }
+
+@keyframes fadeSlideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Mobile formatting */
+@media (max-width: 768px) {
+  .step-title { font-size: 0.8rem; }
+  .step-desc { display: none; }
+  .stepper-wrapper::before, .stepper-wrapper::after { left: 30px; right: 30px; }
+}

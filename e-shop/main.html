@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClickDash | Modern Shopping</title>
+    <link rel="icon" type="image/png" href="images/favcon.png" />
+    <link rel="stylesheet" href="style copy.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <a href="index.html">
+        <img
+          src="images/clickdash-removebg-preview.png"
+          alt="ClickDash Logo"
+        />
+      </a>
+
+      <div style="display: flex; align-items: center; gap: 20px">
+        <button
+          id="dark-mode-toggle"
+          style="
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: white;
+          "
+          aria-label="Toggle Dark Mode"
+        >
+          🌙
+        </button>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 50 50"
+          id="menu-icon"
+          fill="white"
+        >
+          <path
+            d="M 3 9 A 1.0001 1.0001 0 1 0 3 11 L 47 11 A 1.0001 1.0001 0 1 0 47 9 L 3 9 z M 3 24 A 1.0001 1.0001 0 1 0 3 26 L 47 26 A 1.0001 1.0001 0 1 0 47 24 L 3 24 z M 3 39 A 1.0001 1.0001 0 1 0 3 41 L 47 41 A 1.0001 1.0001 0 1 0 47 39 L 3 39 z"
+          ></path>
+        </svg>
+      </div>
+    </header>
+
+    <div id="menu-con">
+      <ul id="list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="profile.html" target="_blank">Profile</a></li>
+        <li><a href="cart.html" target="_blank">Cart</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <main>
+      <section class="hero-section" id="home">
+        <div class="hero-content">
+          <h2>Welcome to ClickDash</h2>
+          <p>
+            Discover exclusive deals and a seamless, premium shopping
+            experience.
+          </p>
+          <div id="search">
+            <form class="search-container">
+              <input
+                type="search"
+                placeholder="Search for anything..."
+                class="search-input"
+              />
+              <button type="submit" class="search-button">&#128269;</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="products">
+        <div class="section-title">
+          <h2>Shop by Category</h2>
+          <p>Explore our highly curated collections.</p>
+        </div>
+
+        <div class="category-grid">
+          <a href="electronics.html" class="category-card">
+            <img src="images/electronics.jpg" alt="Electronics" />
+            <div class="overlay"><h3>Electronics</h3></div>
+          </a>
+
+          <a href="fashion.html" class="category-card">
+            <img src="images/fashion.png" alt="Fashion" />
+            <div class="overlay"><h3>Fashion</h3></div>
+          </a>
+
+          <a href="home-garden.html" class="category-card">
+            <img src="images/home-garden.jpg" alt="Home and Garden" />
+            <div class="overlay"><h3>Home & Garden</h3></div>
+          </a>
+
+          <a href="sports.html" class="category-card">
+            <img src="images/sports.jpg" alt="Sports and Outdoors" />
+            <div class="overlay"><h3>Sports & Outdoors</h3></div>
+          </a>
+
+          <a href="toys.html" class="category-card">
+            <img src="images/toys.jpg" alt="Toys and Games" />
+            <div class="overlay"><h3>Toys & Games</h3></div>
+          </a>
+
+          <a href="office.html" class="category-card">
+            <img src="images/office.jpg" alt="Office Supplies" />
+            <div class="overlay"><h3>Office</h3></div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <p>&copy; 2026 ClickDash. All rights reserved.</p>
+      <p>
+        Contact us at <a href="mailto:info@clickdash.com">info@clickdash.com</a>
+      </p>
+      <p>Phone: (123) 456-7890</p>
+    </footer>
+
+    <script src="main.js">
+      // --- LIVE SEARCH BAR LOGIC ---
+            const searchInput = document.querySelector('.search-input');
+            const searchForm = document.querySelector('.search-container');
+            const categoryCards = document.querySelectorAll('.category-card');
+
+
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+            });
+
+
+            searchInput.addEventListener('input', function(e) {
+
+                const searchTerm = e.target.value.toLowerCase().trim();
+
+
+                categoryCards.forEach(card => {
+
+                    const title = card.querySelector('h3').innerText.toLowerCase();
+
+
+                    if (title.includes(searchTerm)) {
+                        card.style.display = 'block';
+
+                        card.style.animation = 'fadeIn 0.5s ease';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+    </script>
+  </body>
+</html>

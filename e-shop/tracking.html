@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Tracking | ClickDash</title>
+    <link rel="icon" type="image/png" href="images/favcon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="tracking.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html">
+        <img
+          src="images/clickdash-removebg-preview.png"
+          alt="ClickDash Logo"
+        />
+      </a>
+
+      <div style="display: flex; align-items: center; gap: 20px">
+        <button
+          id="dark-mode-toggle"
+          style="
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: white;
+          "
+          aria-label="Toggle Dark Mode"
+        >
+          🌙
+        </button>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 50 50"
+          id="menu-icon"
+          fill="white"
+        >
+          <path
+            d="M 3 9 A 1.0001 1.0001 0 1 0 3 11 L 47 11 A 1.0001 1.0001 0 1 0 47 9 L 3 9 z M 3 24 A 1.0001 1.0001 0 1 0 3 26 L 47 26 A 1.0001 1.0001 0 1 0 47 24 L 3 24 z M 3 39 A 1.0001 1.0001 0 1 0 3 41 L 47 41 A 1.0001 1.0001 0 1 0 47 39 L 3 39 z"
+          ></path>
+        </svg>
+      </div>
+    </header>
+
+    <nav id="menu-con">
+      <ul id="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="login.html">Profile</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="tracking-card">
+        <div class="tracking-header">
+          <h1>Thank You For Your Order!</h1>
+          <p>Order Number: <strong id="order-id">#CD-.......</strong></p>
+          <p>
+            Estimated Arrival:
+            <span class="highlight" id="arrival-date">Calculating...</span>
+          </p>
+        </div>
+
+        <div class="stepper-wrapper">
+          <div class="step completed">
+            <div class="step-circle">✓</div>
+            <div class="step-title">Order Placed</div>
+            <div class="step-desc">Payment confirmed</div>
+          </div>
+
+          <div class="step active">
+            <div class="step-circle">2</div>
+            <div class="step-title">Packaging</div>
+            <div class="step-desc">Preparing your items</div>
+          </div>
+
+          <div class="step">
+            <div class="step-circle">3</div>
+            <div class="step-title">Shipped</div>
+            <div class="step-desc">Handed to courier</div>
+          </div>
+
+          <div class="step">
+            <div class="step-circle">4</div>
+            <div class="step-title">Delivered</div>
+            <div class="step-desc">Arrived at destination</div>
+          </div>
+        </div>
+
+        <div class="action-area">
+          <a href="index.html" class="home-btn">Continue Shopping</a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 ClickDash. All rights reserved.</p>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>

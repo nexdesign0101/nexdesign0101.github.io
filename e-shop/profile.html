@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile | ClickDash</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="profile.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html"
+        ><img src="images/clickdash-removebg-preview.png" alt="ClickDash Logo"
+      /></a>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="40"
+        height="40"
+        viewBox="0 0 50 50"
+        id="menu-icon"
+        fill="white"
+      >
+        <path
+          d="M 3 9 A 1.0001 1.0001 0 1 0 3 11 L 47 11 A 1.0001 1.0001 0 1 0 47 9 L 3 9 z M 3 24 A 1.0001 1.0001 0 1 0 3 26 L 47 26 A 1.0001 1.0001 0 1 0 47 24 L 3 24 z M 3 39 A 1.0001 1.0001 0 1 0 3 41 L 47 41 A 1.0001 1.0001 0 1 0 47 39 L 3 39 z"
+        ></path>
+      </svg>
+    </header>
+    <nav id="menu-con">
+      <ul id="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="dashboard-container">
+        <aside class="profile-sidebar">
+          <div class="avatar">M</div>
+          <h2>Malek Ahmed</h2>
+          <p>malek@example.com</p>
+          <ul class="sidebar-menu">
+            <li><a href="#" class="active">My Account</a></li>
+            <li><a href="#">Order History</a></li>
+            <li><a href="#">Payment Methods</a></li>
+            <li><a href="#">Settings</a></li>
+          </ul>
+          <a href="login.html" class="logout-btn">Log Out</a>
+        </aside>
+
+        <section class="dashboard-main">
+          <div class="panel-card">
+            <h3>Recent Orders</h3>
+            <div class="order-list">
+              <div class="order-item">
+                <div class="order-info">
+                  <h4>Order #CD-894321</h4>
+                  <p>Placed on April 25, 2026 • 2 Items • $40.00</p>
+                </div>
+                <span class="order-status status-transit">In Transit</span>
+                <a href="tracking.html" class="track-btn">Track</a>
+              </div>
+              <div class="order-item">
+                <div class="order-info">
+                  <h4>Order #CD-332901</h4>
+                  <p>Placed on March 10, 2026 • 1 Item • $199.00</p>
+                </div>
+                <span class="order-status status-delivered">Delivered</span>
+                <a
+                  href="#"
+                  class="track-btn"
+                  style="background: #eee; color: #888; pointer-events: none"
+                  >Track</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <h3>Account Details</h3>
+            <form class="form-grid">
+              <div class="input-group">
+                <label>First Name</label>
+                <input type="text" value="Malek" />
+              </div>
+              <div class="input-group">
+                <label>Last Name</label>
+                <input type="text" value="Ahmed" />
+              </div>
+              <div class="input-group" style="grid-column: span 2">
+                <label>Shipping Address</label>
+                <input
+                  type="text"
+                  value="123 Tech Street, New Tiba City, Luxor"
+                />
+              </div>
+            </form>
+            <button class="save-btn">Save Changes</button>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer><p>&copy; 2026 ClickDash. All rights reserved.</p></footer>
+    <script>
+      const menuIcon = document.getElementById("menu-icon");
+      const menuCon = document.getElementById("menu-con");
+      const menuLinks = document.querySelectorAll("#menu-con a");
+      menuIcon.addEventListener("click", () =>
+        menuCon.classList.toggle("active"),
+      );
+      menuLinks.forEach((link) =>
+        link.addEventListener("click", () =>
+          menuCon.classList.remove("active"),
+        ),
+      );
+    </script>
+  </body>
+</html>

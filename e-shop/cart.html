@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Cart | ClickDash</title>
+    <link rel="icon" type="image/png" href="images/favcon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="cart.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html">
+        <img
+          src="images/clickdash-removebg-preview.png"
+          alt="ClickDash Logo"
+        />
+      </a>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="40"
+        height="40"
+        viewBox="0 0 50 50"
+        id="menu-icon"
+        fill="white"
+      >
+        <path
+          d="M 3 9 A 1.0001 1.0001 0 1 0 3 11 L 47 11 A 1.0001 1.0001 0 1 0 47 9 L 3 9 z M 3 24 A 1.0001 1.0001 0 1 0 3 26 L 47 26 A 1.0001 1.0001 0 1 0 47 24 L 3 24 z M 3 39 A 1.0001 1.0001 0 1 0 3 41 L 47 41 A 1.0001 1.0001 0 1 0 47 39 L 3 39 z"
+        ></path>
+      </svg>
+    </header>
+
+    <nav id="menu-con">
+      <ul id="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1 class="cart-header">Your Cart</h1>
+
+      <div class="cart-wrapper">
+        <div class="cart-items" id="cart-container"></div>
+
+        <div class="order-summary">
+          <h3>Order Summary</h3>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="subtotal-amount">$0.00</span>
+          </div>
+          <div class="summary-row" id="shipping-row" style="display:none;">
+            <span>Shipping</span>
+            <span>$5.00</span>
+          </div>
+          <!-- PROMO DISCOUNT ROW — hidden until a valid code is applied -->
+          <div class="summary-row" id="discount-row" style="display:none;">
+            <span>Discount (<span id="applied-promo-name"></span>)</span>
+            <span id="discount-amount" style="color:#28a745;"></span>
+          </div>
+
+          <div class="summary-total">
+            <span>Total</span>
+            <span id="grand-total">$0.00</span>
+          </div>
+
+          <!-- PROMO CODE SECTION -->
+          <div class="promo-section">
+            <p class="promo-label">Have a promo code?</p>
+            <div class="promo-input-row">
+              <input
+                type="text"
+                id="promo-input"
+                class="promo-input"
+                placeholder="Enter code (e.g. SAVE10)"
+              />
+              <button id="apply-promo-btn" class="apply-promo-btn">Apply</button>
+            </div>
+            <p id="promo-message" style="display:none;font-size:0.85rem;margin-top:6px;"></p>
+          </div>
+
+          <button class="checkout-btn" id="open-checkout">
+            Proceed to Checkout
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <div id="checkout-modal" class="modal-overlay">
+      <div class="modal-content">
+        <span class="close-modal" id="close-modal">&times;</span>
+        <h2>Complete Your Order</h2>
+        <p class="modal-subtitle">Select your preferred payment method</p>
+
+        <div class="payment-methods">
+          <label class="payment-label selected" id="label-cc">
+            <input type="radio" name="payment" value="cc" checked />
+            <div class="pay-icon">💳</div>
+            <span>Credit / Debit Card</span>
+          </label>
+
+          <label class="payment-label" id="label-paypal">
+            <input type="radio" name="payment" value="paypal" />
+            <div class="pay-icon">🅿️</div>
+            <span>PayPal</span>
+          </label>
+
+          <label class="payment-label" id="label-cod">
+            <input type="radio" name="payment" value="cod" />
+            <div class="pay-icon">💵</div>
+            <span>Cash on Delivery</span>
+          </label>
+        </div>
+
+        <div id="cc-form" class="payment-form">
+          <div class="input-group">
+            <label>Card Number</label>
+            <input
+              type="text"
+              placeholder="0000 0000 0000 0000"
+              maxlength="19"
+            />
+          </div>
+          <div class="form-row">
+            <div class="input-group">
+              <label>Expiry Date</label>
+              <input type="text" placeholder="MM/YY" maxlength="5" />
+            </div>
+            <div class="input-group">
+              <label>CVC</label>
+              <input type="text" placeholder="123" maxlength="3" />
+            </div>
+          </div>
+        </div>
+
+        <button class="confirm-pay-btn" id="confirm-payment-btn">
+          Pay <span id="modal-total-display">$0.00</span>
+        </button>
+      </div>
+    </div>
+
+    <footer id="contact">
+      <p>&copy; 2026 ClickDash. All rights reserved.</p>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+      // Checkout Modal Logic
+      const checkoutBtn   = document.getElementById("open-checkout");
+      const modalOverlay  = document.getElementById("checkout-modal");
+      const closeModal    = document.getElementById("close-modal");
+      const paymentLabels = document.querySelectorAll(".payment-label");
+      const ccForm        = document.getElementById("cc-form");
+      const confirmBtn    = document.getElementById("confirm-payment-btn");
+      const modalTotal    = document.getElementById("modal-total-display");
+
+      checkoutBtn.addEventListener("click", () => {
+        if (!cart.length) { alert("Your cart is empty!"); return; }
+        modalTotal.innerText = document.getElementById("grand-total").innerText;
+        modalOverlay.style.display = "flex";
+        setTimeout(() => modalOverlay.classList.add("active"), 10);
+      });
+
+      closeModal.addEventListener("click", () => {
+        modalOverlay.classList.remove("active");
+        setTimeout(() => (modalOverlay.style.display = "none"), 300);
+      });
+
+      paymentLabels.forEach((label) => {
+        label.addEventListener("click", function () {
+          paymentLabels.forEach((l) => l.classList.remove("selected"));
+          this.classList.add("selected");
+          ccForm.style.display = this.querySelector("input").value === "cc" ? "flex" : "none";
+        });
+      });
+
+      confirmBtn.addEventListener("click", () => {
+        confirmBtn.innerHTML = "Processing...";
+        setTimeout(() => { window.location.href = "tracking.html"; }, 800);
+      });
+    </script>
+  </body>
+</html>
