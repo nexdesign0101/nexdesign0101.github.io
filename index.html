@@ -295,6 +295,57 @@
         font-size: 0.9rem;
       }
 
+      /* ── Founder ── */
+      .founder-section {
+        padding: 60px 50px;
+        background-color: var(--bg-color);
+      }
+
+      .founder-card {
+        max-width: 720px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        background-color: var(--card-bg);
+        border: 1px solid #333;
+        border-radius: 16px;
+        padding: 40px;
+      }
+
+      .founder-photo {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center top;
+        border: 3px solid transparent;
+        background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+                    linear-gradient(135deg, var(--grad-start), var(--grad-end)) border-box;
+        flex-shrink: 0;
+      }
+
+      .founder-info h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      .founder-info .founder-role {
+        font-size: 0.9rem;
+        color: var(--grad-end);
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+
+      .founder-info p {
+        color: var(--text-muted);
+        font-size: 0.97rem;
+        line-height: 1.7;
+      }
+
       /* ════════════════════════════════
          MOBILE  ≤ 768 px
       ════════════════════════════════ */
@@ -378,6 +429,23 @@
         .button-group {
           flex-direction: column;
           gap: 12px;
+        }
+
+        /* Founder */
+        .founder-section {
+          padding: 40px 20px;
+        }
+
+        .founder-card {
+          flex-direction: column;
+          text-align: center;
+          padding: 30px 24px;
+          gap: 24px;
+        }
+
+        .founder-photo {
+          width: 120px;
+          height: 120px;
         }
 
         /* Socials */
@@ -493,6 +561,19 @@
             <button type="button" class="btn-whatsapp" onclick="sendToWhatsApp()">Send via WhatsApp</button>
           </div>
         </form>
+      </div>
+    </section>
+
+    <section class="founder-section">
+      <div class="founder-card">
+        <img src="malek.jpeg" alt="Malek Ahmed — Founder of NexDesign" class="founder-photo" />
+        <div class="founder-info">
+          <h3>Malek Ahmed</h3>
+          <p class="founder-role">Founder &amp; Creative Director</p>
+          <p>
+            I'm the founder of NexDesign — a passionate web designer, developer, and logo designer dedicated to helping brands and businesses grow through thoughtful digital experiences. My work is driven by a simple belief: great design should look stunning, perform flawlessly, and leave a lasting impression on everyone who encounters it.
+          </p>
+        </div>
       </div>
     </section>
 
