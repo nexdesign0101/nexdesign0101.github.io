@@ -5,23 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NexDesign | Design. Develop. Elevate.</title>
     <link rel="icon" href="favcon01.png" type="image/png" />
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
-    ></script>
-    <script type="text/javascript">
-      (function () {
-        try {
-          if (window.emailjs && typeof emailjs.init === "function") {
-            emailjs.init("3zHh2n6NwTS7nwb1z");
-          } else {
-            console.warn("EmailJS SDK not available yet.");
-          }
-        } catch (e) {
-          console.error("Error initializing EmailJS:", e);
-        }
-      })();
-    </script>
+
     <style>
       /* CSS Variables */
       :root {
@@ -87,9 +71,15 @@
       }
 
       /* Hamburger → X when open */
-      .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-      .hamburger.open span:nth-child(2) { opacity: 0; }
-      .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
 
       .nav-links {
         display: flex;
@@ -241,12 +231,11 @@
         touch-action: manipulation;
       }
 
-      button:hover { opacity: 0.85; }
-      button:active { opacity: 0.7; }
-
-      .btn-email {
-        background: linear-gradient(90deg, var(--grad-start), var(--grad-end));
-        color: white;
+      button:hover {
+        opacity: 0.85;
+      }
+      button:active {
+        opacity: 0.7;
       }
 
       .btn-whatsapp {
@@ -320,8 +309,9 @@
         object-fit: cover;
         object-position: center top;
         border: 3px solid transparent;
-        background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
-                    linear-gradient(135deg, var(--grad-start), var(--grad-end)) border-box;
+        background:
+          linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+          linear-gradient(135deg, var(--grad-start), var(--grad-end)) border-box;
         flex-shrink: 0;
       }
 
@@ -350,7 +340,6 @@
          MOBILE  ≤ 768 px
       ════════════════════════════════ */
       @media (max-width: 768px) {
-
         /* Nav */
         nav {
           padding: 14px 20px;
@@ -500,7 +489,14 @@
     </section>
 
     <section class="hero" style="padding-top: 0">
-      <p style="max-width: 800px; margin: 0 auto; text-transform: none; letter-spacing: 1px;">
+      <p
+        style="
+          max-width: 800px;
+          margin: 0 auto;
+          text-transform: none;
+          letter-spacing: 1px;
+        "
+      >
         NexDesign is a creative design brand focused on building modern
         websites, digital experiences, and visual identities. The name combines
         'Next' and 'Design' to represent innovation, growth, and the future of
@@ -533,12 +529,14 @@
         <form id="orderForm">
           <div class="form-group">
             <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" required placeholder="Enter your name" autocomplete="name" />
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" required placeholder="Enter your email" autocomplete="email" inputmode="email" />
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Enter your name"
+              autocomplete="name"
+            />
           </div>
 
           <div class="form-group">
@@ -553,12 +551,23 @@
 
           <div class="form-group">
             <label for="details">Project Details</label>
-            <textarea id="details" name="details" rows="5" required placeholder="Describe your project requirements..."></textarea>
+            <textarea
+              id="details"
+              name="details"
+              rows="5"
+              required
+              placeholder="Describe your project requirements..."
+            ></textarea>
           </div>
 
           <div class="button-group">
-            <button type="button" class="btn-email" onclick="sendToEmail()">Send via Email</button>
-            <button type="button" class="btn-whatsapp" onclick="sendToWhatsApp()">Send via WhatsApp</button>
+            <button
+              type="button"
+              class="btn-whatsapp"
+              onclick="sendToWhatsApp()"
+            >
+              Send via WhatsApp
+            </button>
           </div>
         </form>
       </div>
@@ -566,12 +575,21 @@
 
     <section class="founder-section">
       <div class="founder-card">
-        <img src="malek.jpeg" alt="Malek Ahmed — Founder of NexDesign" class="founder-photo" />
+        <img
+          src="malek.jpeg"
+          alt="Malek Ahmed — Founder of NexDesign"
+          class="founder-photo"
+        />
         <div class="founder-info">
           <h3>Malek Ahmed</h3>
           <p class="founder-role">Founder &amp; Creative Director</p>
           <p>
-            I'm the founder of NexDesign — a passionate web designer, developer, and logo designer dedicated to helping brands and businesses grow through thoughtful digital experiences. My work is driven by a simple belief: great design should look stunning, perform flawlessly, and leave a lasting impression on everyone who encounters it.
+            I'm the founder of NexDesign — a passionate web designer, developer,
+            and logo designer dedicated to helping brands and businesses grow
+            through thoughtful digital experiences. My work is driven by a
+            simple belief: great design should look stunning, perform
+            flawlessly, and leave a lasting impression on everyone who
+            encounters it.
           </p>
         </div>
       </div>
@@ -582,8 +600,24 @@
         Follow <span class="gradient-text">Us</span>
       </h2>
       <div class="social-links">
-        <a href="https://www.instagram.com/nexdesign.01.01?igsh=MWtzMGRubWhvYnp2OA==" target="_blank" class="social-btn">Instagram</a>
-        <a href="https://www.facebook.com/share/1D1kjYpCx9/" target="_blank" class="social-btn">Facebook</a>
+        <a
+          href="https://www.instagram.com/nexdesign.01.01?igsh=MWtzMGRubWhvYnp2OA=="
+          target="_blank"
+          class="social-btn"
+          >Instagram</a
+        >
+        <a
+          href="https://www.facebook.com/share/1D1kjYpCx9/"
+          target="_blank"
+          class="social-btn"
+          >Facebook</a
+        >
+        <a
+          href="https://www.linkedin.com/in/malek-ahmed-353678387?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+          target="_blank"
+          class="social-btn"
+          >LinkedIn</a
+        >
       </div>
     </section>
 
@@ -594,7 +628,7 @@
     <script>
       // ── Hamburger menu ──
       const hamburger = document.getElementById("hamburger");
-      const navLinks  = document.getElementById("navLinks");
+      const navLinks = document.getElementById("navLinks");
 
       hamburger.addEventListener("click", () => {
         hamburger.classList.toggle("open");
@@ -613,53 +647,20 @@
         }
       });
 
-      // ── EmailJS ──
-      function sendToEmail() {
-        const name    = document.getElementById("name").value;
-        const email   = document.getElementById("email").value;
-        const service = document.getElementById("service").value;
-        const details = document.getElementById("details").value;
-
-        if (!name || !email || !details) {
-          alert("Please fill in your name, email, and project details.");
-          return;
-        }
-
-        const templateParams = {
-          from_name: name,
-          user_email: email,
-          service_requested: service,
-          message: details,
-        };
-
-        if (!window.emailjs || typeof emailjs.send !== "function") {
-          alert("Email service is unavailable. Make sure the EmailJS SDK is loaded.");
-          return;
-        }
-
-        emailjs.send("service_xdj1t06", "template_f4pzldh", templateParams)
-          .then(() => {
-            alert("SUCCESS! Your order has been sent to NexDesign.");
-            document.getElementById("orderForm").reset();
-          })
-          .catch((error) => {
-            alert("FAILED to send email. Error: " + JSON.stringify(error));
-          });
-      }
-
       // ── WhatsApp ──
       function sendToWhatsApp() {
-        const name    = document.getElementById("name").value;
-        const email   = document.getElementById("email").value;
+        const name = document.getElementById("name").value;
         const service = document.getElementById("service").value;
         const details = document.getElementById("details").value;
 
-        if (!name || !email || !details) {
-          alert("Please fill in your name, email, and project details before sending to WhatsApp.");
+        if (!name || !details) {
+          alert(
+            "Please fill in your name and project details before sending to WhatsApp.",
+          );
           return;
         }
 
-        const message = `*New Order Reservation*\n\n*Name:* ${name}\n*Email:* ${email}\n*Service:* ${service}\n*Details:* ${details}`;
+        const message = `*New Order Reservation*\n\n*Name:* ${name}\n*Service:* ${service}\n*Details:* ${details}`;
         const whatsappURL = `https://wa.me/201093525871?text=${encodeURIComponent(message)}`;
         window.open(whatsappURL, "_blank");
       }
